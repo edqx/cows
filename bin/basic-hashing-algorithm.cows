@@ -1,0 +1,43 @@
+declare function and(x: number, y: number): number {
+    declare var bitsx = x;
+    declare var bitsy = y;
+    declare var byteval = 1;
+    declare var out = 0;
+    while (bitsx > 0 || bitsy > 0) {
+        if (bitsx % 2 == 1 && bitsy % 2 == 1) {
+            out = out + byteval;
+        }
+        bitsx = floor(bitsx / 2);
+        bitsy = floor(bitsy / 2);
+        byteval = byteval * 2;
+    }
+    return out;
+}
+
+declare function xor(x: number, y: number): number {
+    declare var bitsx = x;
+    declare var bitsy = y;
+    declare var byteval = 1;
+    declare var out = 0;
+    while (bitsx > 0 || bitsy > 0) {
+        if (bitsx % 2 == bitsy % 2) {
+            out = out + byteval;
+        }
+        bitsx = floor(bitsx / 2);
+        bitsy = floor(bitsy / 2);
+        byteval = byteval * 2;
+    }
+    return out;
+}
+
+declare function hash(str: string): number {
+    declare var i = 1;
+    declare var out = 7;
+    while (i < str.length()) {
+        declare var a = 31 + itemIdxOf(charCodes, charAt(str, i));
+        out = out * a;
+        i = i + 1;
+    }
+    return and(out, 16383);
+}
+
